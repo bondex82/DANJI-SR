@@ -8,7 +8,7 @@
     "build:client": "vite build --outDir dist/client",
     "build:server": "esbuild server.ts --bundle --platform=node --outfile=dist/server.cjs --format=cjs --external:fsevents",
     "build": "npm run clean && npm run build:client && npm run build:server",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "lint": "tsc --noEmit",
     "start": "NODE_ENV=production node dist/server.cjs"
   },
@@ -54,6 +54,7 @@
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.21",
     "esbuild": "^0.28.0",
+    "rimraf": "^6.1.3",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
