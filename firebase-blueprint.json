@@ -1,0 +1,146 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User accounts for staff, agents, admins, and super admins",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier (user ID or auto-uuid)" },
+        "name": { "type": "string", "description": "Full name of the user" },
+        "email": { "type": "string", "description": "Email address" },
+        "password": { "type": "string", "description": "Bcrypt hashed password" },
+        "role": { "type": "string", "enum": ["agent", "admin", "super_admin"], "description": "Access level role" },
+        "phone": { "type": "string", "description": "Phone number" },
+        "polling_unit": { "type": "string", "description": "Assigned polling unit name" },
+        "ward": { "type": "string", "description": "Assigned ward name" },
+        "lga": { "type": "string", "description": "Assigned Local Government Area" },
+        "photo_url": { "type": "string", "description": "Profile picture URL" },
+        "status": { "type": "string", "enum": ["active", "blocked"], "description": "Account status" }
+      },
+      "required": ["name", "email", "password", "role", "status"]
+    },
+    "Contestant": {
+      "title": "Contestant",
+      "description": "Candidates contested in the election",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier" },
+        "name": { "type": "string", "description": "Name of primary candidate" },
+        "party": { "type": "string", "description": "Political party name" },
+        "party_logo": { "type": "string", "description": "URL to party logo image" },
+        "candidate_picture": { "type": "string", "description": "URL to candidate picture" }
+      },
+      "required": ["name", "party"]
+    },
+    "PollingUnit": {
+      "title": "PollingUnit",
+      "description": "Polling units configured for the election",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier" },
+        "name": { "type": "string", "description": "Polling unit name" },
+        "ward": { "type": "string", "description": "Ward name" },
+        "lga": { "type": "string", "description": "Local Government Area under which polling unit falls" },
+        "total_registered": { "type": "integer", "description": "Total registered voters" }
+      },
+      "required": ["name", "ward", "lga", "total_registered"]
+    },
+    "Result": {
+      "title": "Result",
+      "description": "Election results submissions by polling units",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique report ID" },
+        "polling_unit": { "type": "string", "description": "Polling unit name where votes are cast" },
+        "ward": { "type": "string", "description": "Ward name" },
+        "lga": { "type": "string", "description": "LGA name" },
+        "contestant_id": { "type": "string", "description": "Reference ID of contestant" },
+        "votes": { "type": "integer", "description": "Number of valid votes won" },
+        "agent_id": { "type": "string", "description": "User ID of submitting agent" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"], "description": "Approval status" },
+        "evidence_url": { "type": "string", "description": "URL of the uploaded physical result sheet photo" },
+        "created_at": { "type": "string", "format": "date-time", "description": "Creation timestamp" }
+      },
+      "required": ["polling_unit", "ward", "lga", "contestant_id", "votes", "agent_id", "status"]
+    },
+    "Accreditation": {
+      "title": "Accreditation",
+      "description": "Voter accreditation and general tallies reported per polling unit",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique report ID" },
+        "polling_unit": { "type": "string", "description": "Polling unit name" },
+        "ward": { "type": "string", "description": "Ward name" },
+        "lga": { "type": "string", "description": "LGA name" },
+        "total_accredited": { "type": "integer", "description": "Total accredited voters" },
+        "total_active_voters": { "type": "integer", "description": "Voters present" },
+        "total_votes_cast": { "type": "integer", "description": "Total votes cast including invalid" },
+        "invalid_votes": { "type": "integer", "description": "Count of invalid votes" },
+        "agent_id": { "type": "string", "description": "User ID of submitting agent" },
+        "evidence_url": { "type": "string", "description": "URL of evidence sheet" },
+        "created_at": { "type": "string", "format": "date-time", "description": "Creation timestamp" }
+      },
+      "required": ["polling_unit", "ward", "lga", "total_accredited", "agent_id"]
+    },
+    "Incident": {
+      "title": "Incident",
+      "description": "Security, logistical, or violent incident reports",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique incident ID" },
+        "polling_unit": { "type": "string", "description": "Polling unit name" },
+        "ward": { "type": "string", "description": "Ward name" },
+        "lga": { "type": "string", "description": "LGA name" },
+        "agent_id": { "type": "string", "description": "Agent ID reporting the incident" },
+        "description": { "type": "string", "description": "Detailed description description" },
+        "status": { "type": "string", "enum": ["pending", "resolved", "dismissed"], "description": "Status of report" },
+        "evidence_url": { "type": "string", "description": "Optional evidence photo URL" },
+        "is_quick_alert": { "type": "boolean", "description": "Whether this is a high-priority quick panic button press" },
+        "created_at": { "type": "string", "format": "date-time", "description": "Incident report timestamp" }
+      },
+      "required": ["polling_unit", "ward", "lga", "agent_id", "description", "status"]
+    },
+    "Broadcast": {
+      "title": "Broadcast",
+      "description": "General or targeted instructions sent from coordination center to agents",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique broadcast ID" },
+        "message": { "type": "string", "description": "Text body of the directive" },
+        "target_user_id": { "type": "string", "description": "Agent user ID or null for global broadcasts" },
+        "created_at": { "type": "string", "format": "date-time", "description": "Timestamp of broadcast" }
+      },
+      "required": ["message", "created_at"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User documents mapping to specific user accounts"
+    },
+    "/contestants/{contestantId}": {
+      "schema": "Contestant",
+      "description": "Contested candidates"
+    },
+    "/polling_units/{pollingUnitId}": {
+      "schema": "PollingUnit",
+      "description": "Active polling units in the wards/LGAs"
+    },
+    "/results/{resultId}": {
+      "schema": "Result",
+      "description": "Votes tallies submitted by polling units and agents"
+    },
+    "/accreditations/{accreditationId}": {
+      "schema": "Accreditation",
+      "description": "Accreditation numbers and total votes cast"
+    },
+    "/incidents/{incidentId}": {
+      "schema": "Incident",
+      "description": "Polling unit incidents, disruptions, and updates"
+    },
+    "/broadcasts/{broadcastId}": {
+      "schema": "Broadcast",
+      "description": "Broadcast alerts and memos"
+    }
+  }
+}

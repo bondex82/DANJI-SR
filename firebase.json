@@ -1,0 +1,8 @@
+{
+  "firestore": [
+    {
+      "database": "ai-studio-profjeromesituat-b168ead2-e0d1-43f8-800f-ca5efbc814a8",
+      "rules": "firestore.rules"
+    }
+  ]
+}

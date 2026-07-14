@@ -1,0 +1,8 @@
+{
+  "name": "DANJI SS Situation Room",
+  "description": "Real-time election monitoring and data collation platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

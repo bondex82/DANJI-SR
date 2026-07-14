@@ -1,0 +1,86 @@
+{
+  "users": {
+    "admin_user": {
+      "name": "Coordination Admin",
+      "email": "coordination@profjerome2027.org",
+      "password": "$2b$10$l9fbDtArnPTwjehT50ovh.uvAGDf4n2xZzcHwFp6iiGIDJPE/6B9W",
+      "role": "super_admin",
+      "phone": "+2348001234567",
+      "polling_unit": "PU-001",
+      "ward": "Jalingo Ward A",
+      "lga": "Jalingo",
+      "photo_url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200",
+      "status": "active"
+    },
+    "agent_user_1": {
+      "name": "John Agent",
+      "email": "agent1@profjerome2027.org",
+      "password": "$2b$10$UCI.NyrwSfXV.5qgBCu0TODKSJDTOAyY7oS5Bya8JY.T2d3cuWhoK",
+      "role": "agent",
+      "phone": "+2348009876543",
+      "polling_unit": "Main Central Square",
+      "ward": "Jalingo Mall",
+      "lga": "Jalingo",
+      "photo_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
+      "status": "active"
+    },
+    "agent_user_2": {
+      "name": "Mary Agent",
+      "email": "agent2@profjerome2027.org",
+      "password": "$2b$10$UCI.NyrwSfXV.5qgBCu0TODKSJDTOAyY7oS5Bya8JY.T2d3cuWhoK",
+      "role": "agent",
+      "phone": "+2348005554444",
+      "polling_unit": "Kona Central PU",
+      "ward": "Kona",
+      "lga": "Jalingo",
+      "photo_url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200",
+      "status": "active"
+    }
+  },
+  "contestants": {
+    "accord_candidate": {
+      "name": "Prof. Jerome Nyame",
+      "party": "APGA",
+      "party_logo": "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&q=80&w=200",
+      "candidate_picture": "/uploads/prof_jerome_portrait.jpg"
+    },
+    "pdp_candidate": {
+      "name": "Sen. Kefas Agbu",
+      "party": "PDP",
+      "party_logo": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=100",
+      "candidate_picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200"
+    },
+    "lp_candidate": {
+      "name": "Comrade Joe Ajaero",
+      "party": "LP",
+      "party_logo": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=100",
+      "candidate_picture": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200"
+    }
+  },
+  "polling_units": {
+    "pu_1": {
+      "name": "Main Central Square",
+      "ward": "Jalingo Mall",
+      "lga": "Jalingo",
+      "total_registered": 1200
+    },
+    "pu_2": {
+      "name": "Kona Central PU",
+      "ward": "Kona",
+      "lga": "Jalingo",
+      "total_registered": 850
+    },
+    "pu_3": {
+      "name": "Mile Six Primary School",
+      "ward": "Mile Six",
+      "lga": "Jalingo",
+      "total_registered": 1540
+    },
+    "pu_4": {
+      "name": "Sarki Area Square",
+      "ward": "Sarki",
+      "lga": "Jalingo",
+      "total_registered": 920
+    }
+  }
+}
